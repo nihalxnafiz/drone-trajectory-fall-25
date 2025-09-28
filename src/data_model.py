@@ -1,29 +1,29 @@
 """Data models for the camera and user specification."""
 
+from dataclasses import dataclass
+from typing import List, Tuple
 
-class DatasetSpec:
-    """
-    Data model for specifications of an image dataset.
-    """
-
-    pass
-
-
+@dataclass
 class Camera:
-    """
-    Data model for a simple pinhole camera.
+    fx: float  # focal length in x (pixels)
+    fy: float  # focal length in y (pixels)
+    cx: float  # principal point x (pixels)
+    cy: float  # principal point y (pixels)
+    sensor_size_x_mm: float  # sensor width in mm
+    sensor_size_y_mm: float  # sensor height in mm
+    image_size_x_px: int     # image width in pixels
+    image_size_y_px: int     # image height in pixels
 
-    References:
-    - https://github.com/colmap/colmap/blob/3f75f71310fdec803ab06be84a16cee5032d8e0d/src/colmap/sensor/models.h#L220
-    - https://en.wikipedia.org/wiki/Pinhole_camera_model
-    """
+@dataclass
+class DatasetSpec:
+    area_corners: List[Tuple[float, float]]  # List of (lat, lon) tuples
+    flight_height_m: float
+    front_overlap: float
+    side_overlap: float
+    camera: Camera
 
-    pass
-
-
+@dataclass
 class Waypoint:
-    """
-    Waypoints are positions where the drone should fly to and capture a photo.
-    """
-
-    pass
+    latitude: float
+    longitude: float
+    altitude_m: float
