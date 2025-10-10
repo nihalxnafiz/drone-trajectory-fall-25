@@ -20,7 +20,6 @@ class DatasetSpec:
     flight_height_m: float
     front_overlap: float
     side_overlap: float
-    camera: Camera
 
 @dataclass
 class Waypoint:
