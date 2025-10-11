@@ -16,10 +16,12 @@ class Camera:
 
 @dataclass
 class DatasetSpec:
-    area_corners: List[Tuple[float, float]]  # List of (lat, lon) tuples
-    flight_height_m: float
-    front_overlap: float
-    side_overlap: float
+    overlap: float                # Ratio (0 to 1) of scene shared between consecutive images
+    sidelap: float                # Ratio (0 to 1) of scene shared between images in adjacent rows
+    height: float                 # Scan height above ground (meters)
+    scan_dimension_x: float       # Horizontal size of scan area (meters)
+    scan_dimension_y: float       # Vertical size of scan area (meters)
+    exposure_time_ms: float 
 
 @dataclass
 class Waypoint:
