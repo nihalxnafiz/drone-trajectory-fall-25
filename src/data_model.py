@@ -21,7 +21,8 @@ class DatasetSpec:
     height: float                 # Scan height above ground (meters)
     scan_dimension_x: float       # Horizontal size of scan area (meters)
     scan_dimension_y: float       # Vertical size of scan area (meters)
-    exposure_time_ms: float 
+    exposure_time_ms: float
+    camera_angle: float = 0.0     # Angle from nadir (in degrees), default is 0 (nadir) 
 
 @dataclass
 class Waypoint:
