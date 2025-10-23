@@ -1,7 +1,8 @@
 """Data models for the camera and user specification."""
 
+
 from dataclasses import dataclass
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 @dataclass
 class Camera:
@@ -26,6 +27,20 @@ class DatasetSpec:
 
 @dataclass
 class Waypoint:
-    latitude: float
-    longitude: float
-    altitude_m: float
+    """
+    Waypoint for the flight plan.
+
+    x_m, y_m: planar coordinates in meters (local frame, origin = scan center)
+    z_m: altitude above ground in meters
+    speed_m_s: desired speed while capturing at this waypoint (m/s)
+    yaw_deg: optional yaw for the drone in degrees
+    look_at_x_m, look_at_y_m, look_at_z_m: optional point the camera should look at (useful for non-nadir)
+    """
+    x_m: float
+    y_m: float
+    z_m: float
+    speed_m_s: float = 0.0
+    yaw_deg: float = 0.0
+    look_at_x_m: Optional[float] = None
+    look_at_y_m: Optional[float] = None
+    look_at_z_m: Optional[float] = None
